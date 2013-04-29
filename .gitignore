@@ -1,0 +1,16 @@
+# Standard symfony2 ignores
+/web/bundles/
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+/build/
+/vendor/
+/bin/
+/composer.phar
+/app/config/parameters.yml
+
+# Other exceptions
+/public
+
+# IDEs
+.idea
