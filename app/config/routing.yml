@@ -1,0 +1,16 @@
+cfp_vote:
+    resource: "@CfpVoteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cfp_user:
+    resource: "@CfpUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cfp_talk:
+    resource: "@CfpTalkBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cfp_conference:
+    resource: "@CfpConferenceBundle/Resources/config/routing.yml"
+    prefix:   /
+

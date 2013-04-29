@@ -1,0 +1,44 @@
+<?php
+
+namespace Cfp\TalkBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Speaker
+ *
+ * @ORM\Table(name="speaker")
+ * @ORM\Entity
+ */
+class Speaker
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cfp\TalkBundle\Entity\Talk")
+     */
+    private $talk;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cfp\UserBundle\Entity\User")
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(name="confirmed", type="boolean", nullable=false)
+     */
+    private $confirmed;
+
+    /**
+     * @ORM\Column(name="confirmCode", type="string", length=100, nullable=true)
+     */
+    private $confirmCode;
+
+}

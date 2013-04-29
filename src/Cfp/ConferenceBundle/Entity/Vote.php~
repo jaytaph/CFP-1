@@ -1,0 +1,66 @@
+<?php
+
+namespace Cfp\ConferenceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Vote
+ *
+ * @ORM\Table(name="vote")
+ * @ORM\Entity
+ */
+class Vote
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dt_created", type="datetime", nullable=false)
+     */
+    private $dtCreated;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vote", type="integer", nullable=false)
+     */
+    private $vote;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remark", type="text", nullable=false)
+     */
+    private $remark;
+
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Submission
+     *
+     * @ORM\ManyToOne(targetEntity="Submission")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="submission_id", referencedColumnName="id")
+     * })
+     */
+    private $submission;
+
+
+}

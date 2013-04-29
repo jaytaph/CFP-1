@@ -1,0 +1,7 @@
+parameters:
+#    cfp_vote.example.class: Cfp\VoteBundle\Example
+
+services:
+#    cfp_vote.example:
+#        class: %cfp_vote.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
