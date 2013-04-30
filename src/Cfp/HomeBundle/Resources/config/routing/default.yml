@@ -1,0 +1,8 @@
+cfp_home_homepage:
+    pattern:  /
+    defaults: { _controller: CfpHomeBundle:Default:home }
+
+cfp_home_about:
+    pattern:  /about
+    defaults: { _controller: CfpHomeBundle:Default:about }
+

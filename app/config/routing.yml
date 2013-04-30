@@ -1,3 +1,7 @@
+cfp_home:
+    resource: "@CfpHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cfp_vote:
     resource: "@CfpVoteBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,4 @@
+cfp_home_default:
+    resource: "@CfpHomeBundle/Resources/config/routing/default.yml"
+    prefix:   /
+
