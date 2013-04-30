@@ -20,11 +20,13 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
 // Local bundles
             new Cfp\ConferenceBundle\CfpConferenceBundle(),
             new Cfp\TalkBundle\CfpTalkBundle(),
             new Cfp\UserBundle\CfpUserBundle(),
             new Cfp\VoteBundle\CfpVoteBundle(),
+            new Cfp\HomeBundle\CfpHomeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

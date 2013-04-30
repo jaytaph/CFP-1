@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Welcome to Call4Papers{% endblock %}
+
+{% block body %}
+  <div class="hero-unit">
+      <h3>Call4Papers</h3>
+
+      <p>Disrupt iphone semiotics, biodiesel american apparel YOLO tonx sriracha. Skateboard chambray mustache
+          readymade, fanny pack brunch ennui before they sold out next level carles typewriter american apparel.
+          Brooklyn carles small batch next level, street art disrupt biodiesel ennui. Literally chillwave neutra, ennui
+          hella 8-bit flexitarian fashion axe mlkshk PBR. Beard before they sold out american apparel, VHS stumptown
+          chillwave gastropub. Selvage etsy portland, mlkshk irony cred meggings. Umami forage literally blue bottle,
+          marfa occupy ethnic.</p>
+  </div>
+
+
+    {% include "CfpConferenceBundle:Default:list.html.twig" with { "conferences" : conferences } %}
+
+{% endblock %}

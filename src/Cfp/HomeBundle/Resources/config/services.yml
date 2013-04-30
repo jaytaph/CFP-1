@@ -1,0 +1,7 @@
+parameters:
+#    cfp_home.example.class: Cfp\HomeBundle\Example
+
+services:
+#    cfp_home.example:
+#        class: %cfp_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
