@@ -1,0 +1,4 @@
+cfp_talk_talk:
+    resource: "@CfpTalkBundle/Resources/config/routing/talk.yml"
+    prefix:   /talk
+

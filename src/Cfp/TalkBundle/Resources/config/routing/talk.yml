@@ -1,0 +1,30 @@
+talk:
+    pattern:  /
+    defaults: { _controller: "CfpTalkBundle:Talk:index" }
+
+talk_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CfpTalkBundle:Talk:show" }
+
+talk_new:
+    pattern:  /new
+    defaults: { _controller: "CfpTalkBundle:Talk:new" }
+
+talk_create:
+    pattern:  /create
+    defaults: { _controller: "CfpTalkBundle:Talk:create" }
+    requirements: { _method: post }
+
+talk_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CfpTalkBundle:Talk:edit" }
+
+talk_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CfpTalkBundle:Talk:update" }
+    requirements: { _method: post|put }
+
+talk_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CfpTalkBundle:Talk:delete" }
+    requirements: { _method: post|delete }

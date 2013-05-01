@@ -41,6 +41,9 @@ class Speaker
      */
     private $confirmCode;
 
+    public function __toString() {
+        return $this->getUser()->getFullName();
+    }
 
     /**
      * Get id
@@ -142,5 +145,59 @@ class Speaker
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->talk = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add talk
+     *
+     * @param \Cfp\TalkBundle\Entity\Talk $talk
+     * @return Speaker
+     */
+    public function addTalk(\Cfp\TalkBundle\Entity\Talk $talk)
+    {
+        $this->talk[] = $talk;
+    
+        return $this;
+    }
+
+    /**
+     * Remove talk
+     *
+     * @param \Cfp\TalkBundle\Entity\Talk $talk
+     */
+    public function removeTalk(\Cfp\TalkBundle\Entity\Talk $talk)
+    {
+        $this->talk->removeElement($talk);
+    }
+
+    /**
+     * Add user
+     *
+     * @param \Cfp\UserBundle\Entity\User $user
+     * @return Speaker
+     */
+    public function addUser(\Cfp\UserBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \Cfp\UserBundle\Entity\User $user
+     */
+    public function removeUser(\Cfp\UserBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
     }
 }

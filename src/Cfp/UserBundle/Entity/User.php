@@ -21,6 +21,11 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", type="string", length=100)
+     */
+    protected $fullName;
+
 
     /**
      * Get id
@@ -30,5 +35,28 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set fullName
+     *
+     * @param string $fullName
+     * @return User
+     */
+    public function setFullName($fullName)
+    {
+        $this->fullName = $fullName;
+    
+        return $this;
+    }
+
+    /**
+     * Get fullName
+     *
+     * @return string 
+     */
+    public function getFullName()
+    {
+        return $this->fullName;
     }
 }

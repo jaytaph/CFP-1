@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Talk</h1>
+
+    <table class="table table-bordered record_properties">
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td><strong>{{ entity.title }}</strong></td>
+            </tr>
+            <tr>
+                <th>Abstract</th>
+                <td>{{ entity.abstract }}</td>
+            </tr>
+            <tr>
+                <th>Remark</th>
+                <td>{{ entity.remark }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <a class='btn' href="{{ path('talk') }}">Back to the list</a>
+        <a class='btn' href="{{ path('talk_edit', { 'id': entity.id }) }}">Edit</a>
+        <form class='form-inline' action="{{ path('talk_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class='btn btn-danger' type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
