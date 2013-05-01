@@ -21,39 +21,11 @@ class User extends BaseUser
      */
     protected $id;
 
-
     /**
-     * Add talk
-     *
-     * @param \Cfp\TalkBundle\Entity\Talk $talk
-     * @return User
+     * @ORM\Column(type="string", type="string", length=100)
      */
-    public function addTalk(\Cfp\TalkBundle\Entity\Talk $talk)
-    {
-        $this->talks[] = $talk;
-    
-        return $this;
-    }
+    protected $fullName;
 
-    /**
-     * Remove talk
-     *
-     * @param \Cfp\TalkBundle\Entity\Talk $talk
-     */
-    public function removeTalk(\Cfp\TalkBundle\Entity\Talk $talk)
-    {
-        $this->talks->removeElement($talk);
-    }
-
-    /**
-     * Get talk
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTalks()
-    {
-        return $this->talks;
-    }
 
     /**
      * Get id
@@ -64,12 +36,27 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
     /**
-     * Constructor
+     * Set fullName
+     *
+     * @param string $fullName
+     * @return User
      */
-    public function __construct()
+    public function setFullName($fullName)
     {
-        $this->talks = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+        $this->fullName = $fullName;
     
+        return $this;
+    }
+
+    /**
+     * Get fullName
+     *
+     * @return string 
+     */
+    public function getFullName()
+    {
+        return $this->fullName;
+    }
 }

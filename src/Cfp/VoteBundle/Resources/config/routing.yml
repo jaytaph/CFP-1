@@ -1,3 +1,0 @@
-cfp_vote_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CfpVoteBundle:Default:index }

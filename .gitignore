@@ -9,6 +9,9 @@
 /composer.phar
 /app/config/parameters.yml
 
+# OSX Stufu
+._*
+
 # Other exceptions
 /public
 

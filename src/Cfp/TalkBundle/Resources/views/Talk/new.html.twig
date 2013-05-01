@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Talk creation</h1>
+
+    <form class="form-horizontal well" action="{{ path('talk_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+
+    <a href="{{ path('talk') }}">Back to the list</a>
+
+{% endblock %}

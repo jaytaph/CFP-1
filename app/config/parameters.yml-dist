@@ -13,3 +13,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    email_contact_email: info@example.org
+    email_contact_name:  Call4Papers Team

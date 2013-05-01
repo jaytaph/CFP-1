@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Conference</h1>
+
+    <table class="table table-condensed table-striped table-bordered record_properties">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Dtcreated</th>
+                <td>{{ entity.dtCreated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dtstart</th>
+                <td>{{ entity.dtStart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dtend</th>
+                <td>{{ entity.dtEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Cfpstart</th>
+                <td>{{ entity.cfpStart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Cfpend</th>
+                <td>{{ entity.cfpEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Geolong</th>
+                <td>{{ entity.geoLong }}</td>
+            </tr>
+            <tr>
+                <th>Geolat</th>
+                <td>{{ entity.geoLat }}</td>
+            </tr>
+            <tr>
+                <th>Tag</th>
+                <td>{{ entity.tag }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class='btn' href="{{ path('conference') }}">Back to the list</a>
+    <a class='btn' href="{{ path('conference_edit', { 'id': entity.id }) }}">Edit</a>
+    <form class='form-inline' action="{{ path('conference_delete', { 'id': entity.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        {{ form_widget(delete_form) }}
+        <button class='btn btn-danger' type="submit">Delete</button>
+    </form>
+
+{% endblock %}

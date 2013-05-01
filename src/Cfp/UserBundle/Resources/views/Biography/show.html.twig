@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Biography</h1>
+
+    <table class="table table-condensed table-striped table-bordered record_properties">
+        <tbody>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Biography</th>
+                <td>{{ entity.biography }}</td>
+            </tr>
+            <tr>
+                <th>Dtadded</th>
+                <td>{{ entity.dtAdded|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dtupdated</th>
+                <td>{{ entity.dtUpdated|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ entity.path }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class='btn' href="{{ path('biography') }}">Back to the list</a>
+    <a class='btn' href="{{ path('biography_edit', { 'id': entity.id }) }}">Edit</a>
+    <form class='form-inline' action="{{ path('biography_delete', { 'id': entity.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        {{ form_widget(delete_form) }}
+        <button class='btn btn-danger' type="submit">Delete</button>
+    </form>
+
+{% endblock %}

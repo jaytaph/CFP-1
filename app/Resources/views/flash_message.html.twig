@@ -1,16 +1,22 @@
-{% for key, flash in app.session.getFlashes() %}
+{% for key, flash in app.session.flashbag %}
+
 {# fos flash banners are done through the fos layouts, since they need translations #}
 {% if key|slice(0, 4) != "fos_" %}
     <div class="alert alert-{{ key }}">
         <a class="close" data-dismiss="alert" href="#">&times;</a>
     {% if key == "success" %}
+        <img width="50" height="50" src="/img/flash_success.ico" align="left">
         <h4 class="alert-heading">Well done!</h4>
-    {% elseif key == "error" %}
+    {% elseif key == "error" or key == "warning" %}
+        <img width="50" height="50" src="/img/flash_error.ico" align="left">
         <h4 class="alert-heading">Oh snap!</h4>
     {% elseif key == "info" %}
+        <img width="50" height="50" src="/img/flash_info.ico" align="left">
         <h4 class="alert-heading">Heads up!</h4>
     {% endif %}
-        {{ flash }}
+        {% for message in flash %}
+            {{ message }}
+        {% endfor %}
     </div>
 {% endif %}
 {% endfor %}

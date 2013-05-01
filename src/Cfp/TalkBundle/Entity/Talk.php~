@@ -52,9 +52,9 @@ class Talk
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Cfp\UserBundle\Entity\User", mappedBy="user")
+     * @ORM\ManyToOne(targetEntity="Cfp\TalkBundle\Entity\Speaker", inversedBy="talk")
      */
-    private $users;
+    private $speakers;
 
     /**
      * Constructor
@@ -177,36 +177,50 @@ class Talk
         return $this->type;
     }
 
+
     /**
-     * Add users
+     * Add speakers
      *
-     * @param \Cfp\UserBundle\Entity\User $users
+     * @param \Cfp\TalkBundle\Entity\Speaker $speakers
      * @return Talk
      */
-    public function addUser(\Cfp\UserBundle\Entity\User $users)
+    public function addSpeaker(\Cfp\TalkBundle\Entity\Speaker $speakers)
     {
-        $this->users[] = $users;
+        $this->speakers[] = $speakers;
     
         return $this;
     }
 
     /**
-     * Remove users
+     * Remove speakers
      *
-     * @param \Cfp\UserBundle\Entity\User $users
+     * @param \Cfp\TalkBundle\Entity\Speaker $speakers
      */
-    public function removeUser(\Cfp\UserBundle\Entity\User $users)
+    public function removeSpeaker(\Cfp\TalkBundle\Entity\Speaker $speakers)
     {
-        $this->users->removeElement($users);
+        $this->speakers->removeElement($speakers);
     }
 
     /**
-     * Get users
+     * Get speakers
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUsers()
+    public function getSpeakers()
     {
-        return $this->users;
+        return $this->speakers;
+    }
+
+    /**
+     * Set speakers
+     *
+     * @param \Cfp\TalkBundle\Entity\Speaker $speakers
+     * @return Talk
+     */
+    public function setSpeakers(\Cfp\TalkBundle\Entity\Speaker $speakers = null)
+    {
+        $this->speakers = $speakers;
+    
+        return $this;
     }
 }

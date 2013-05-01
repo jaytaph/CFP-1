@@ -1,0 +1,30 @@
+biography:
+    pattern:  /
+    defaults: { _controller: "CfpUserBundle:Biography:index" }
+
+biography_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CfpUserBundle:Biography:show" }
+
+biography_new:
+    pattern:  /new
+    defaults: { _controller: "CfpUserBundle:Biography:new" }
+
+biography_create:
+    pattern:  /create
+    defaults: { _controller: "CfpUserBundle:Biography:create" }
+    requirements: { _method: post }
+
+biography_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CfpUserBundle:Biography:edit" }
+
+biography_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CfpUserBundle:Biography:update" }
+    requirements: { _method: post|put }
+
+biography_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CfpUserBundle:Biography:delete" }
+    requirements: { _method: post|delete }

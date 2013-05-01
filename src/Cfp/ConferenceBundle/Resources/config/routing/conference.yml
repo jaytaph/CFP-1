@@ -1,0 +1,30 @@
+conference:
+    pattern:  /
+    defaults: { _controller: "CfpConferenceBundle:Conference:index" }
+
+conference_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CfpConferenceBundle:Conference:show" }
+
+conference_new:
+    pattern:  /new
+    defaults: { _controller: "CfpConferenceBundle:Conference:new" }
+
+conference_create:
+    pattern:  /create
+    defaults: { _controller: "CfpConferenceBundle:Conference:create" }
+    requirements: { _method: post }
+
+conference_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CfpConferenceBundle:Conference:edit" }
+
+conference_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CfpConferenceBundle:Conference:update" }
+    requirements: { _method: post|put }
+
+conference_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CfpConferenceBundle:Conference:delete" }
+    requirements: { _method: post|delete }

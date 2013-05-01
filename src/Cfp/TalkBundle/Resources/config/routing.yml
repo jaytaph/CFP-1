@@ -1,3 +1,4 @@
-cfp_talk_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CfpTalkBundle:Default:index }
+cfp_talk_talk:
+    resource: "@CfpTalkBundle/Resources/config/routing/talk.yml"
+    prefix:   /talk
+
