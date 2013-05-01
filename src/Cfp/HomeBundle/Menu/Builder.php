@@ -22,31 +22,22 @@ class Builder extends ContainerAware
         if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
             $user = $this->container->get('security.context')->getToken()->getUser();
 
-            // @TODO: Just fetch count, not all talks
+            // @TODO: Just fetch count, not all records!
             $talks = $em->getRepository('CfpTalkBundle:Talk')->findAll();
-
-            // Add machines to the menu as a dropdown
-            $menu->addChild('Abstracts <span class="badge badge-success">'.count($talks).'</span>', array('route' => 'talk'))->setAttribute('divider_prepend', true);
-
-            // @TODO: Just fetch count, not all conferences
+            $biographies = $em->getRepository('CfpUserBundle:Biography')->findAll();
+            $submissions = $em->getRepository('CfpConferenceBundle:Submission')->findAll();
             $conferences = $em->getRepository('CfpConferenceBundle:Conference')->findAll();
 
-            $menu->addChild('Conferences <span class="badge badge-success">'.count($conferences).'</span>', array('route' => 'conference'));
+            $menu->addChild('Conferences')->setAttribute('divider_prepend', true)->setAttribute('dropdown', true);
+            $menu['Conferences']->addChild('Conferences <span class="badge badge-success">'.count($conferences).'</span>', array('route' => 'conference'));
+            $menu['Conferences']->addChild('Abstracts <span class="badge badge-success">'.count($talks).'</span>', array('route' => 'talk'));
 
-            // @TODO: Just fetch count, not all conferences
-            $submissions = $em->getRepository('CfpConferenceBundle:Submission')->findAll();
-            $menu->addChild('Submissions <span class="badge badge-success">'.count($submissions).'</span>', array('route' => 'cfp_home_about'));
-//            foreach ($user->getMachines() as $machine) {
-//                $menu['Machines']->addChild($machine, array('route' => 'box_environment', 'routeParameters' => array("machine_id" => $machine->getId())));
-//            }
+            $menu->addChild('Talks')->setAttribute('divider_prepend', true)->setAttribute('dropdown', true);
+            $menu->getChild('Talks')->addChild('Submissions <span class="badge badge-success">'.count($submissions).'</span>', array('route' => 'cfp_home_about'));
+            $menu->getChild('Talks')->addChild('Biographies <span class="badge badge-success">'.count($biographies).'</span>', array('route' => 'biography'));
 
             $gravatar = $this->container->get('gravatar.api');
-            $menu->addChild($user->getUserName()." <img src='".$gravatar->getUrl($user->getEmail(), 20)."'>")->setAttribute('raw', true)->setAttribute('divider_prepend', true);
-
-//            <p class="navbar-text">{{ app.user.fullname }} <img src="{{ gravatar(app.user.email, 25) }}"></p>
-//            <li><p class="navbar-text">{{ app.user.fullname }} <img src="{{ gravatar(app.user.email, 25) }}"></p></li>
-//            $user = $this->container->get('security.context')->getToken()->getUser();
-//            $menu->addChild('Profile', array('route' => 'fos_user_security_logout'));
+            $menu->addChild($user->getFullName()." <img src='".$gravatar->getUrl($user->getEmail(), 20)."'>")->setAttribute('raw', true)->setAttribute('divider_prepend', true);
             $menu->addChild('Logout', array('route' => 'fos_user_security_logout'));
         } else {
             $menu->addChild('Login', array('route' => 'fos_user_security_login'));

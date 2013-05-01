@@ -1,3 +1,7 @@
+CfpUserBundle_biography:
+    resource: "@CfpUserBundle/Resources/config/routing/biography.yml"
+    prefix:   /biography
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
