@@ -21,9 +21,9 @@ class Builder extends ContainerAware
             $user = $this->container->get('security.context')->getToken()->getUser();
 
             // Add machines to the menu as a dropdown
-            $menu->addChild('Abstracts', array('route' => 'cfp_home_about'))->setAttribute('divider_prepend', true);
+            $menu->addChild('Abstracts <span class="badge badge-success">2</span>', array('route' => 'talk'))->setAttribute('divider_prepend', true);
             $menu->addChild('Conferences', array('route' => 'cfp_home_about'));
-            $menu->addChild('Submissions', array('route' => 'cfp_home_about'));
+            $menu->addChild('Submissions <span class="badge badge-success">2</span>', array('route' => 'cfp_home_about'))->setAttribute('divider_prepend', true);
 //            foreach ($user->getMachines() as $machine) {
 //                $menu['Machines']->addChild($machine, array('route' => 'box_environment', 'routeParameters' => array("machine_id" => $machine->getId())));
 //            }
