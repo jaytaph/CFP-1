@@ -23,39 +23,6 @@ class User extends BaseUser
 
 
     /**
-     * Add talk
-     *
-     * @param \Cfp\TalkBundle\Entity\Talk $talk
-     * @return User
-     */
-    public function addTalk(\Cfp\TalkBundle\Entity\Talk $talk)
-    {
-        $this->talks[] = $talk;
-    
-        return $this;
-    }
-
-    /**
-     * Remove talk
-     *
-     * @param \Cfp\TalkBundle\Entity\Talk $talk
-     */
-    public function removeTalk(\Cfp\TalkBundle\Entity\Talk $talk)
-    {
-        $this->talks->removeElement($talk);
-    }
-
-    /**
-     * Get talk
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTalks()
-    {
-        return $this->talks;
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -64,12 +31,4 @@ class User extends BaseUser
     {
         return $this->id;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->talks = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
 }

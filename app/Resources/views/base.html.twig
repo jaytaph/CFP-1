@@ -24,10 +24,15 @@
         <link rel="apple-touch-icon-precomposed" href="/bootstrap/ico/apple-touch-icon-57-precomposed.png">
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
+        <script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
+
+
         <title>{% block title %}CFP{% endblock title %}</title>
     </head>
 
     <body>
+
+{% if not app.request.get('standalone') %}
         {# Remove me when we are not in beta anymore #}
         <img style="z-index: 5000; position: fixed; top: 0; left: 0; border: 0;" src="/img/beta_ribbon.png" alt="This site beta">
 
@@ -41,16 +46,26 @@
                     </a>
                     <a class="brand" href="/">Call4Papers</a>
                     <div class="nav-collapse">
-                        {{ knp_menu_render('CfpDefaultBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+                        <ul class="nav">
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Register</a></li>
+                            <li><a href="#">Logout</a></li>
+                            <li class="pull-right"><a href="#">About</a></li>
+                        </ul>
+                        {#{{ knp_menu_render('CfpDefaultBundle:Builder:mainMenu', {'currentClass': 'active'}) }}#}
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
+{% endif %}
+
 
         <div class="container">
             {% include "::flash_message.html.twig" %}
 
             {% block body %}{% endblock %}
+
+{% if not app.request.get('standalone') %}
             <footer>
                 <hr>
                 <p>
@@ -62,6 +77,7 @@
                    <img style='height:20px; padding-bottom: 6px; padding-right: 10px' class="pull-right" title="Written in PHP" src="/img/logo_php.gif">
                </p>
             </footer>
+{% endif %}
         </div>
 
         {% block javascripts %}{% endblock %}

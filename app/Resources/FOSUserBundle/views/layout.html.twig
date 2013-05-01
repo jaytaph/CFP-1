@@ -1,0 +1,17 @@
+{# Standard layout for all the fosuser stuff #}
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    {% for key, message in app.session.flashbag %}
+    <div class="alert">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        {{ message|trans({}, 'FOSUserBundle') }}
+    </div>
+    {% endfor %}
+
+<div class="container">
+    {% block fos_user_content %}{% endblock %}
+</div>
+
+{% endblock %}

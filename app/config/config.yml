@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      ~
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -24,6 +24,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'MopaBootstrapBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -69,3 +72,17 @@ mopa_bootstrap:
         show_legend: false # default is true
         show_child_legend: false # default is true
         error_type: block # or inline which is default
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Cfp\UserBundle\Entity\User
+    registration:
+            form:
+                type: cfp_user_registration
+            confirmation:
+                enabled: true
+    from_email:
+        address:        %email_contact_email%
+        sender_name:    %email_contact_name%
+

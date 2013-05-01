@@ -1,3 +1,0 @@
-cfp_conference_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CfpConferenceBundle:Default:index }

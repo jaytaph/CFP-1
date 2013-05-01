@@ -1,0 +1,45 @@
+{# Actual login form #}
+<div>
+    <p>Log into your account. Don't you have an account yet? Please move to the windows on your right side in order to
+        register a new account. </p>
+</div>
+<br/>
+
+{% if error is defined %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+<form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
+    <fieldset>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div class="control-group">
+            <label class="control-label" for="username">Username: </label>
+            <div class="controls">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="password">Password: </label>
+            <div class="controls">
+                <input type="password" id="password" name="_password" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+            <div class="controls">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+
+    </fieldset>
+</form>
+
+<p><small><a class="fancybox fancybox.iframe" href="{{ path("fos_user_resetting_request", { "standalone" : "1" }) }}">Click here</a> if you have lost your password (your name will be added to the wall-of-shame though).</small></p>
