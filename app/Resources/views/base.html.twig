@@ -46,17 +46,12 @@
                     </a>
                     <a class="brand" href="/">Call4Papers</a>
                     <div class="nav-collapse">
-                        <ul class="nav">
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
-                            <li><a href="#">Logout</a></li>
-                            <li class="pull-right"><a href="#">About</a></li>
-                        </ul>
-                        {#{{ knp_menu_render('CfpDefaultBundle:Builder:mainMenu', {'currentClass': 'active'}) }}#}
+                        {{ knp_menu_render('CfpHomeBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
+
 {% endif %}
 
 

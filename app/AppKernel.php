@@ -20,8 +20,10 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
 // Local bundles
             new Cfp\ConferenceBundle\CfpConferenceBundle(),
             new Cfp\TalkBundle\CfpTalkBundle(),

@@ -86,3 +86,11 @@ fos_user:
         address:        %email_contact_email%
         sender_name:    %email_contact_name%
 
+ornicar_gravatar: ~
+
+knp_menu:
+    twig:
+        template: ::menu.html.twig
+    templating: false
+    default_renderer: twig
+
