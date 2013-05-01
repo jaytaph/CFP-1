@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Conference list</h1>
+
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>CfP Start</th>
+                <th>CfP End</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.name }}</td>
+                <td>
+                    {% if entity.dtStart|date("d-m-Y") == entity.dtEnd|date("d-m-Y") %}
+                        {{ entity.dtStart|date("d-m-Y") }}
+                    {% else %}
+                        {{ entity.dtStart|date("d-m-Y") }} - {{ entity.dtEnd|date("d-m-Y") }}
+                    {% endif %}
+                </td>
+                <td>{% if entity.cfpStart %}{{ entity.cfpStart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.cfpEnd %}{{ entity.cfpEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.description | truncate(50) }}</td>
+                <td>
+                    <a class='btn btn-mini btn-primary' href="{{ path('conference_show', { 'id': entity.id }) }}">show</a>
+                    <a class='btn btn-mini btn-primary' href="{{ path('conference_edit', { 'id': entity.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="form-actions">
+        <a class='btn btn-primary' href="{{ path('conference_new') }}">Create a new conference</a>
+    </div>
+
+    {% endblock %}

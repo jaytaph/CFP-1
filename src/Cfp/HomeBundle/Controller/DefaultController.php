@@ -8,12 +8,7 @@ class DefaultController extends Controller
 {
     public function homeAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $conferences = $em->getRepository('CfpConferenceBundle:Conference')->getLatest(10);
-
-        return $this->render('CfpHomeBundle:Default:home.html.twig', array(
-            'conferences' => $conferences,
-        ));
+        return $this->render('CfpHomeBundle:Default:home.html.twig');
     }
 
     public function aboutAction()

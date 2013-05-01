@@ -1,0 +1,4 @@
+cfp_conference_conference:
+    resource: "@CfpConferenceBundle/Resources/config/routing/conference.yml"
+    prefix:   /conference
+
