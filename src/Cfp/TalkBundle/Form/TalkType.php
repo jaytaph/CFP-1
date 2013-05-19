@@ -14,7 +14,13 @@ class TalkType extends AbstractType
             ->add('title')
             ->add('abstract')
             ->add('remark')
-            ->add('speakers')
+            ->add('speakers', 'entity', array(
+                    'class' => 'CfpUserBundle:User',
+                    'property' => 'fullname',
+                    'expanded' => false,
+                    'multiple' => true,
+                    'mapped' => false,
+                ))
         ;
     }
 

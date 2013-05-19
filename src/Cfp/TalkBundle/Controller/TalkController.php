@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cfp\TalkBundle\Entity\Talk;
+use Cfp\TalkBundle\Entity\Speaker;
 use Cfp\TalkBundle\Form\TalkType;
 
 /**
@@ -43,6 +44,21 @@ class TalkController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+
+            $tmp = $request->request->get('cfp_talkbundle_talktype');
+            foreach ($tmp['speakers'] as $speaker) {
+                print($speaker);
+
+                $u = $this->getDoctrine()->getManager()->getRepository('CfpUserBundle:User')->findOneById($speaker);
+                if ($u) {
+                    $s = new Speaker();
+                    $s->setTalk($entity);
+                    $s->setUser($u);
+                    $s->setConfirmed(true);
+                    $em->persist($s);
+                }
+            }
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('talk_show', array('id' => $entity->getId())));
