@@ -5,12 +5,12 @@ namespace Cfp\ConferenceBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Application
+ * ConferenceCommittee
  *
- * @ORM\Table(name="application")
+ * @ORM\Table(name="conference_committee")
  * @ORM\Entity
  */
-class Application
+class ConferenceCommittee
 {
     /**
      * @var integer
@@ -22,21 +22,14 @@ class Application
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dt_created", type="datetime", nullable=false)
-     */
-    private $dtCreated;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Conference")
      */
     private $conference;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cfp\UserBundle\Entity\Biography")
+     * @ORM\ManyToOne(targetEntity="Cfp\UserBundle\Entity\User")
      */
-    private $biography;
+    private $user;
 
 
     /**
@@ -50,33 +43,10 @@ class Application
     }
 
     /**
-     * Set dtCreated
-     *
-     * @param \DateTime $dtCreated
-     * @return Application
-     */
-    public function setDtCreated($dtCreated)
-    {
-        $this->dtCreated = $dtCreated;
-    
-        return $this;
-    }
-
-    /**
-     * Get dtCreated
-     *
-     * @return \DateTime 
-     */
-    public function getDtCreated()
-    {
-        return $this->dtCreated;
-    }
-
-    /**
      * Set conference
      *
      * @param \Cfp\ConferenceBundle\Entity\Conference $conference
-     * @return Application
+     * @return ConferenceCommittee
      */
     public function setConference(\Cfp\ConferenceBundle\Entity\Conference $conference = null)
     {
@@ -96,25 +66,25 @@ class Application
     }
 
     /**
-     * Set biography
+     * Set user
      *
-     * @param \Cfp\UserBundle\Entity\Biography $biography
-     * @return Application
+     * @param \Cfp\UserBundle\Entity\User $user
+     * @return ConferenceCommittee
      */
-    public function setBiography(\Cfp\UserBundle\Entity\Biography $biography = null)
+    public function setUser(\Cfp\UserBundle\Entity\User $user = null)
     {
-        $this->biography = $biography;
+        $this->user = $user;
     
         return $this;
     }
 
     /**
-     * Get biography
+     * Get user
      *
-     * @return \Cfp\UserBundle\Entity\Biography 
+     * @return \Cfp\UserBundle\Entity\User
      */
-    public function getBiography()
+    public function getUser()
     {
-        return $this->biography;
+        return $this->user;
     }
 }

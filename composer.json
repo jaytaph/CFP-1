@@ -23,7 +23,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "knplabs/knp-menu-bundle":"dev-master",
         "knplabs/knp-menu":"dev-master",
-        "ornicar/gravatar-bundle": "dev-master"
+        "ornicar/gravatar-bundle": "dev-master",
+        "hwi/oauth-bundle": "0.3.x-dev"
     },
     "scripts": {
         "post-install-cmd": [

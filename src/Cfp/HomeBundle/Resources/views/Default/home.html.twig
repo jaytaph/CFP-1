@@ -3,6 +3,8 @@
 {% block title %}Welcome to Call4Papers{% endblock %}
 
 {% block body %}
+    {% render(controller("CfpHomeBundle:Default:MainTip")) %}
+
   <div class="hero-unit">
       <h3>Call4Papers</h3>
 
@@ -15,7 +17,6 @@
   </div>
 
 {% endblock %}
-
 
 {% block widget %}
 {% if app.user is not empty and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
