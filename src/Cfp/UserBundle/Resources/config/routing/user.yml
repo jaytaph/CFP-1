@@ -1,0 +1,3 @@
+user_controller_finduser:
+    pattern:  /find
+    defaults: { _controller: "CfpUserBundle:User:findUser" }
