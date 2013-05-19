@@ -61,6 +61,8 @@
             {% block body %}{% endblock %}
 
 {% if not app.request.get('standalone') %}
+            {% block widget %}{% endblock %}
+
             <footer>
                 <hr>
                 <p>

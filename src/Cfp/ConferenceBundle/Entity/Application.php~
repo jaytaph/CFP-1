@@ -5,12 +5,12 @@ namespace Cfp\ConferenceBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Submission
+ * Application
  *
- * @ORM\Table(name="submission")
+ * @ORM\Table(name="application")
  * @ORM\Entity
  */
-class Submission
+class Application
 {
     /**
      * @var integer
@@ -22,13 +22,6 @@ class Submission
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="remarks", type="text", nullable=true)
-     */
-    private $remarks;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dt_created", type="datetime", nullable=false)
@@ -36,8 +29,13 @@ class Submission
     private $dtCreated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application")
+     * @ORM\ManyToOne(targetEntity="Conference")
      */
-    private $application;
+    private $conference;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cfp\UserBundle\Entity\Biography")
+     */
+    private $biography;
 
 }

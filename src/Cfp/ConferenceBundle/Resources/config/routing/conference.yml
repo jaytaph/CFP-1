@@ -28,3 +28,9 @@ conference_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "CfpConferenceBundle:Conference:delete" }
     requirements: { _method: post|delete }
+
+conference_submit:
+    pattern:  /{id}/submit
+    defaults: { _controller: "CfpConferenceBundle:Conference:submit" }
+    requirements: { _method: post }
+

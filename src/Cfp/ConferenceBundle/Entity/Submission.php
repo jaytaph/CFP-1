@@ -36,15 +36,9 @@ class Submission
     private $dtCreated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Conference")
+     * @ORM\ManyToOne(targetEntity="Application")
      */
-    private $conference;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Cfp\TalkBundle\Entity\Talk")
-     */
-    private $talk;
+    private $application;
 
 
     /**
@@ -104,48 +98,25 @@ class Submission
     }
 
     /**
-     * Set conference
+     * Set application
      *
-     * @param \Cfp\ConferenceBundle\Entity\Conference $conference
+     * @param \Cfp\ConferenceBundle\Entity\Application $application
      * @return Submission
      */
-    public function setConference(\Cfp\ConferenceBundle\Entity\Conference $conference = null)
+    public function setApplication(\Cfp\ConferenceBundle\Entity\Application $application = null)
     {
-        $this->conference = $conference;
+        $this->application = $application;
     
         return $this;
     }
 
     /**
-     * Get conference
+     * Get application
      *
-     * @return \Cfp\ConferenceBundle\Entity\Conference 
+     * @return \Cfp\ConferenceBundle\Entity\Application 
      */
-    public function getConference()
+    public function getApplication()
     {
-        return $this->conference;
-    }
-
-    /**
-     * Set talk
-     *
-     * @param \Cfp\TalkBundle\Entity\Talk $talk
-     * @return Submission
-     */
-    public function setTalk(\Cfp\TalkBundle\Entity\Talk $talk = null)
-    {
-        $this->talk = $talk;
-    
-        return $this;
-    }
-
-    /**
-     * Get talk
-     *
-     * @return \Cfp\TalkBundle\Entity\Talk
-     */
-    public function getTalk()
-    {
-        return $this->talk;
+        return $this->application;
     }
 }

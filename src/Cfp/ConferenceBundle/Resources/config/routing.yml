@@ -2,3 +2,7 @@ cfp_conference_conference:
     resource: "@CfpConferenceBundle/Resources/config/routing/conference.yml"
     prefix:   /conference
 
+cfp_conference_conference_widget:
+    resource: "@CfpConferenceBundle/Resources/config/routing/widget.yml"
+    prefix:   /conference/widget
+

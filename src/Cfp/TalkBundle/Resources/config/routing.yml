@@ -2,3 +2,8 @@ cfp_talk_talk:
     resource: "@CfpTalkBundle/Resources/config/routing/talk.yml"
     prefix:   /talk
 
+cfp_talk_widget:
+    resource: "@CfpTalkBundle/Resources/config/routing/widget.yml"
+    prefix:   /widget
+
+

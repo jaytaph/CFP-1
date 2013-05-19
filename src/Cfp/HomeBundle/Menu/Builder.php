@@ -29,10 +29,11 @@ class Builder extends ContainerAware
             $conferences = $em->getRepository('CfpConferenceBundle:Conference')->findAll();
 
             $menu->addChild('Conferences')->setAttribute('divider_prepend', true)->setAttribute('dropdown', true);
-            $menu['Conferences']->addChild('Conferences <span class="badge badge-success">'.count($conferences).'</span>', array('route' => 'conference'));
-            $menu['Conferences']->addChild('Abstracts <span class="badge badge-success">'.count($talks).'</span>', array('route' => 'talk'));
+            $menu->getChild('Conferences')->addChild('Submitted conferences <span class="badge badge-success">'.count($conferences).'</span>', array('route' => 'conference'));
+            $menu->getChild('Conferences')->addChild('Open CFPs <span class="badge badge-success">'.count($conferences).'</span>', array('route' => 'conference'));
 
             $menu->addChild('Talks')->setAttribute('divider_prepend', true)->setAttribute('dropdown', true);
+            $menu->getChild('Talks')->addChild('Abstracts <span class="badge badge-success">'.count($talks).'</span>', array('route' => 'talk'));
             $menu->getChild('Talks')->addChild('Submissions <span class="badge badge-success">'.count($submissions).'</span>', array('route' => 'cfp_home_about'));
             $menu->getChild('Talks')->addChild('Biographies <span class="badge badge-success">'.count($biographies).'</span>', array('route' => 'biography'));
 
