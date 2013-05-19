@@ -16,6 +16,32 @@ class DefaultController extends Controller
         return $this->render('CfpHomeBundle:Default:about.html.twig');
     }
 
+    public function mainTipAction() {
+        $tip = $this->_findBestMainTip();
+        if (empty($tip)) {
+            return new Response("");
+        }
+        return $this->render('CfpHomeBundle:Widget:maintip.html.twig', array('tip' => $tip));
+    }
+
+    protected function _findBestMainTip()
+    {
+        if (! $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return "It looks like you aren't logged in yet. Why don't you login and explore the site?";
+        }
+
+        $user = $this->get('security.context')->getToken()->getUser();
+        if (count($user->getBiographies()) == 0) {
+            return "It looks like you haven't got any biographies. Why don't you add one so you can submit to conferences?";
+        }
+
+        if (count($user->getTalks()) == 0) {
+            return "It looks like you haven't got any talks. Why don't you add some so you can submit them to conferences?";
+        }
+
+        return "";
+    }
+
     public function tipAction()
     {
         $em = $this->getDoctrine()->getManager();

@@ -57,7 +57,7 @@ class Biography
     private $path;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="biographies")
      */
     private $user;
 

@@ -22,6 +22,7 @@ class ConferenceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        // @TODO: FindAllConferencesWhereAdmin
         $entities = $em->getRepository('CfpConferenceBundle:Conference')->findAll();
 
         return $this->render('CfpConferenceBundle:Conference:index.html.twig', array(

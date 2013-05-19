@@ -27,7 +27,7 @@ class Speaker
     private $talk;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cfp\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Cfp\UserBundle\Entity\User", inversedBy="talks")
      */
     private $user;
 

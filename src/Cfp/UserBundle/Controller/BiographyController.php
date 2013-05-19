@@ -21,8 +21,9 @@ class BiographyController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
 
-        $entities = $em->getRepository('CfpUserBundle:Biography')->findAll();
+        $entities = $em->getRepository('CfpUserBundle:Biography')->findByUser($user);
 
         return $this->render('CfpUserBundle:Biography:index.html.twig', array(
             'entities' => $entities,
@@ -40,6 +41,11 @@ class BiographyController extends Controller
         $form->bind($request);
 
         if ($form->isValid()) {
+            $user = $this->get('security.context')->getToken()->getUser();
+            $entity->setDtAdded(new \DateTime());
+            $entity->setDtUpdated(new \DateTime());
+            $entity->setUser($user);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();

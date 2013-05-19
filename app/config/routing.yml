@@ -17,4 +17,3 @@ cfp_talk:
 cfp_conference:
     resource: "@CfpConferenceBundle/Resources/config/routing.yml"
     prefix:   /
-

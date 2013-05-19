@@ -15,4 +15,5 @@ class TalkRepository extends EntityRepository
                     ->getSingleScalarResult();
     }
 
+
 }

@@ -1,7 +1,7 @@
 {# Actual login form #}
 <div>
     <p>Log into your account. Don't you have an account yet? Please move to the windows on your right side in order to
-        register a new account. </p>
+        register a new account. Or, for use the express-lane and login with your github account.</p>
 </div>
 <br/>
 
@@ -32,12 +32,17 @@
             <label class="control-label" for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
             <div class="controls">
                 <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+
+
             </div>
+
         </div>
 
         <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn btn-primary" type="submit">Login</button> or
+            <a class="btn btn-primary" href="{{ path('hwi_oauth_service_redirect', {'service': 'github' }) }}" alt="Sign in with GitHub"><img src="/img/github-icon.png"> Sign in with Github</a>
         </div>
+
 
     </fieldset>
 </form>

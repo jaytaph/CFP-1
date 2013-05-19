@@ -22,7 +22,8 @@ class TalkController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CfpTalkBundle:Talk')->findAll();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $entities = $em->getRepository('CfpTalkBundle:Talk')->findTalksForSpeaker($user);
 
         return $this->render('CfpTalkBundle:Talk:index.html.twig', array(
             'entities' => $entities,

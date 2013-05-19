@@ -99,3 +99,19 @@ services:
        class: Twig_Extensions_Extension_Text
        tags:
            - { name: twig.extension }
+
+
+hwi_oauth:
+    firewall_name: main
+    connect:
+        account_connector:      cfp_user_provider
+    fosub:
+        username_iterations: 30
+        properties:
+            github: githubId
+    resource_owners:
+        github:
+            type:                github
+            client_id:           e019d85615a144e59ba9
+            client_secret:       46818a6a8a18ca08382b2e9441cda9a916559ee4
+            scope:               ""

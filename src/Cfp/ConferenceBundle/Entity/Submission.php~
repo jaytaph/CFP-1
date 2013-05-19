@@ -40,4 +40,83 @@ class Submission
      */
     private $application;
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     * @return Submission
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+    
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string 
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
+    }
+
+    /**
+     * Set dtCreated
+     *
+     * @param \DateTime $dtCreated
+     * @return Submission
+     */
+    public function setDtCreated($dtCreated)
+    {
+        $this->dtCreated = $dtCreated;
+    
+        return $this;
+    }
+
+    /**
+     * Get dtCreated
+     *
+     * @return \DateTime 
+     */
+    public function getDtCreated()
+    {
+        return $this->dtCreated;
+    }
+
+    /**
+     * Set application
+     *
+     * @param \Cfp\ConferenceBundle\Entity\Application $application
+     * @return Submission
+     */
+    public function setApplication(\Cfp\ConferenceBundle\Entity\Application $application = null)
+    {
+        $this->application = $application;
+    
+        return $this;
+    }
+
+    /**
+     * Get application
+     *
+     * @return \Cfp\ConferenceBundle\Entity\Application 
+     */
+    public function getApplication()
+    {
+        return $this->application;
+    }
 }

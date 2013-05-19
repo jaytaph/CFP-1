@@ -13,10 +13,10 @@ class BiographyType extends AbstractType
         $builder
             ->add('description')
             ->add('biography')
-            ->add('dtAdded')
-            ->add('dtUpdated')
-            ->add('path')
-            ->add('user')
+//            ->add('dtAdded')
+//            ->add('dtUpdated')
+//            ->add('path')
+//            ->add('user')
         ;
     }
 
