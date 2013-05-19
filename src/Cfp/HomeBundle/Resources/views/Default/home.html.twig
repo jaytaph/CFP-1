@@ -15,3 +15,14 @@
   </div>
 
 {% endblock %}
+
+
+{% block widget %}
+{% if app.user is not empty and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <div class="row">
+        {% render(controller("CfpConferenceBundle:Widget:conferences")) %}
+        {% render(controller("CfpTalkBundle:Widget:talks")) %}
+        {% render(controller("CfpUserBundle:Widget:controlpanel")) %}
+    </div>
+{% endif %}
+{% endblock %}

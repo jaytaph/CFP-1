@@ -1,0 +1,3 @@
+user_widget_controlpanel:
+    pattern:  /me
+    defaults: { _controller: "CfpUserBundle:Widget:controlpanel" }

@@ -29,6 +29,7 @@
                 <td>{% if entity.cfpEnd %}{{ entity.cfpEnd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.description | truncate(50) }}</td>
                 <td>
+                    <a class='btn btn-mini btn-success' href="{{ path('conference_submit', { 'id': entity.id }) }}">submit</a>
                     <a class='btn btn-mini btn-primary' href="{{ path('conference_show', { 'id': entity.id }) }}">show</a>
                     <a class='btn btn-mini btn-primary' href="{{ path('conference_edit', { 'id': entity.id }) }}">edit</a>
                 </td>

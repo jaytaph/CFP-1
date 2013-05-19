@@ -1,0 +1,11 @@
+<div class="span4">
+
+    {% render(controller("CfpHomeBundle:Default:tip")) %}
+
+{% if app.user and is_granted("ROLE_ADMINISTRATOR") %}
+    {% include "CfpUserBundle:Widget:controlpanel/admin.html.twig" %}
+{% elseif app.user and is_granted("ROLE_USER") %}
+    {% include "CfpUserBundle:Widget:controlpanel/user.html.twig" %}
+{% endif %}
+
+</div>

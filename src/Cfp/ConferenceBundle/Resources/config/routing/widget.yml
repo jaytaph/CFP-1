@@ -1,0 +1,3 @@
+conference_widget_conferences:
+    pattern:  /conference
+    defaults: { _controller: "CfpConferenceBundle:Widget:conferences" }
