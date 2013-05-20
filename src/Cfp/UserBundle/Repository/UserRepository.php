@@ -15,4 +15,18 @@ class UserRepository extends EntityRepository
                     ->getSingleScalarResult();
     }
 
+    function findUsersByPattern($pattern = "", $returnThreshold = 10) {
+        $users = $this->getEntityManager()->createQueryBuilder()
+                      ->select('u.username, u.email, u.id')
+                      ->from('Cfp\UserBundle\Entity\User', 'u')
+                      ->where('u.username LIKE :pattern')
+                      ->orWhere('u.email LIKE :pattern')
+                      ->orWhere('u.fullName LIKE :pattern')
+                      ->setParameter('pattern', '%'.$pattern.'%')
+                      ->getQuery()
+                      ->getResult();
+
+        return count($users) < $returnThreshold ? $users : array();
+    }
+
 }
