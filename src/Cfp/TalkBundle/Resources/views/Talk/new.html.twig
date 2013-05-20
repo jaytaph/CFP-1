@@ -13,3 +13,19 @@
     <a href="{{ path('talk') }}">Back to the list</a>
 
 {% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="/bundles/mopabootstrap/js/mopabootstrap-collection.js"></script>
+    <script type="text/javascript" src="/js/jquery.tokeninput.js"></script>
+
+
+    <script type="text/javascript">
+//        @TODO: We must connect the tokenInput stuff to all the .ajax_speaker_ac classes.
+        $(document).on("change", ".ajax_speaker_ac", function() {
+            console.log($(this));
+            $(this).tokenInput("{{ path("user_controller_finduser") }}");
+        });
+    </script>
+
+{% endblock %}

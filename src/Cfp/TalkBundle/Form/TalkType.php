@@ -14,14 +14,23 @@ class TalkType extends AbstractType
             ->add('title')
             ->add('abstract')
             ->add('remark')
-            ->add('speakers', 'entity', array(
-                    'class' => 'CfpUserBundle:User',
-                    'property' => 'fullname',
-                    'expanded' => false,
-                    'multiple' => true,
+            ->add('speaker', 'collection', array(
+                   'type' => 'text',
+                   'allow_add' => true,
+                   'allow_delete' => true,
                     'mapped' => false,
-                ))
-        ;
+
+                   'prototype' => true,
+
+                   'widget_add_btn' => array('label' => "add speaker"),
+                   'show_legend' => false, // dont show another legend of subform
+                   'options' => array( // options for collection fields
+                       'widget_remove_btn' => array('label' => "remove", 'attr' => array('class' => 'btn')),
+                       'widget_control_group' => false,
+                       'widget_controls' => false,
+                       'label' => false,
+                       'attr' => array('class' => 'ajax_speaker_ac, input-large'),
+                    )));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

@@ -44,18 +44,31 @@ class TalkController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $em->flush();
+
+            // Always add ourself as a confirmed speaker
+            $user = $this->get('security.context')->getToken()->getUser();
+            $s = new Speaker();
+            $s->setTalk($entity);
+            $s->setUser($user);
+            $s->setConfirmed(true);
+            $em->persist($s);
+            $em->flush();
 
             $tmp = $request->request->get('cfp_talkbundle_talktype');
-            foreach ($tmp['speakers'] as $speaker) {
-                print($speaker);
-
-                $u = $this->getDoctrine()->getManager()->getRepository('CfpUserBundle:User')->findOneById($speaker);
-                if ($u) {
+            foreach ($tmp['speaker'] as $speaker) {
+                $user = $em->getRepository('CfpUserBundle:User')->findOneByFullName($speaker);
+                $speaker = $user ? $em->getRepository('CfpTalkBundle:Speaker')->findByUserAndTalk($user, $entity) : null;
+                if ($user and ! $speaker) {
+                    // User exists, and is not registered as a speaker
                     $s = new Speaker();
                     $s->setTalk($entity);
-                    $s->setUser($u);
-                    $s->setConfirmed(true);
+                    $s->setUser($user);
+                    $s->setConfirmed(false);
+                    $s->setConfirmCode(substr(md5(uniqid(mt_rand(), true)), 0, 8));    // It's code, not a password!
                     $em->persist($s);
+
+                    // @TODO: Send mail to user to confirm as a speaker?
                 }
             }
 
