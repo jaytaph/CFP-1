@@ -14,25 +14,29 @@ class TalkType extends AbstractType
             ->add('title')
             ->add('abstract')
             ->add('remark')
-            ->add('speaker', 'collection', array(
-                    'mapped' => false,
-
-                    'type' => 'text',
-
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'prototype' => true,
-
-                    'widget_add_btn' => array('label' => "extra speaker", 'attr' => array('class' => 'btn addtokenInputter')),
-                    'show_legend' => true, // dont show another legend of subform
-                    'options' => array( // options for collection fields
-                        //'class' => 'Cfp\UserBundle\Entity\User',
-                        'widget_remove_btn' => array('label' => "remove speaker", 'attr' => array('class' => 'btn')),
-                        'widget_control_group' => false,
-                        'widget_controls' => false,
-                        'label' => false,
-                        'attr' => array('class' => 'ajax_speaker_ac input-large'),
-                     )));
+            ->add('type', 'entity', array(
+                    'class' => 'Cfp\TalkBundle\Entity\TalkType',
+                ))
+//            ->add('speaker', 'collection', array(
+//                    'mapped' => false,
+//
+//                    'type' => 'text',
+//
+//                    'allow_add' => true,
+//                    'allow_delete' => true,
+//                    'prototype' => true,
+//
+//                    'widget_add_btn' => array('label' => "extra speaker", 'attr' => array('class' => 'btn addtokenInputter')),
+//                    'show_legend' => true, // dont show another legend of subform
+//                    'options' => array( // options for collection fields
+//                        //'class' => 'Cfp\UserBundle\Entity\User',
+//                        'widget_remove_btn' => array('label' => "remove speaker", 'attr' => array('class' => 'btn')),
+//                        'widget_control_group' => false,
+//                        'widget_controls' => false,
+//                        'label' => false,
+//                        'attr' => array('class' => 'ajax_speaker_ac input-large'),
+//                     )))
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

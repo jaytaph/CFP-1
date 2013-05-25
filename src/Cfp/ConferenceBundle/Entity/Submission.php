@@ -42,6 +42,12 @@ class Submission
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Cfp\TalkBundle\Entity\Talk")
+     */
+    private $talk;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -118,5 +124,28 @@ class Submission
     public function getApplication()
     {
         return $this->application;
+    }
+
+    /**
+     * Set talk
+     *
+     * @param \Cfp\TalkBundle\Entity\Talk $talk
+     * @return Submission
+     */
+    public function setTalk(\Cfp\TalkBundle\Entity\Talk $talk = null)
+    {
+        $this->talk = $talk;
+    
+        return $this;
+    }
+
+    /**
+     * Get talk
+     *
+     * @return \Cfp\TalkBundle\Entity\Talk 
+     */
+    public function getTalk()
+    {
+        return $this->talk;
     }
 }

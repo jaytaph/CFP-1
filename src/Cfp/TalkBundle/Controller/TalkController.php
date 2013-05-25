@@ -55,8 +55,9 @@ class TalkController extends Controller
             $em->persist($s);
             $em->flush();
 
-            $tmp = $request->request->get('cfp_talkbundle_talktype');
-            foreach ($tmp['speaker'] as $speaker) {
+            $req = $request->request->get('cfp_talkbundle_talktype');
+            if (! isset($req['speaker'])) $req['speaker'] = array();
+            foreach ($req['speaker'] as $speaker) {
                 $user = $em->getRepository('CfpUserBundle:User')->findOneByFullName($speaker);
                 $speaker = $user ? $em->getRepository('CfpTalkBundle:Speaker')->findByUserAndTalk($user, $entity) : null;
                 if ($user and ! $speaker) {

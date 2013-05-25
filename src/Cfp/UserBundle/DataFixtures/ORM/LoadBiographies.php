@@ -19,6 +19,7 @@ class LoadBiographies extends AbstractFixture implements OrderedFixtureInterface
         $bio->setDtAdded(new \DateTime());
         $bio->setDtUpdated(new \DateTime());
         $manager->persist($bio);
+        $this->addReference("bio-1", $bio);
 
         $bio = new BioGraphy();
         $bio->setUser($this->getReference('user1'));
@@ -55,6 +56,7 @@ class LoadBiographies extends AbstractFixture implements OrderedFixtureInterface
         $bio->setDtAdded(new \DateTime());
         $bio->setDtUpdated(new \DateTime());
         $manager->persist($bio);
+        $this->addReference("bio-2", $bio);
 
         $manager->flush();
     }

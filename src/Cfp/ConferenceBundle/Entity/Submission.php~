@@ -42,6 +42,12 @@ class Submission
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Cfp\TalkBundle\Entity\Talk")
+     */
+    private $talk;
+
+
+    /**
      * Get id
      *
      * @return integer 

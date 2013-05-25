@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Speaker
  *
  * @ORM\Table(name="speaker")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cfp\TalkBundle\Repository\SpeakerRepository")
  */
 class Speaker
 {
