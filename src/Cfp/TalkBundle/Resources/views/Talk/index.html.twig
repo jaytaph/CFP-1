@@ -8,6 +8,7 @@
             <tr>
                 <th>Title</th>
                 <th>Abstract</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.abstract|truncate(100) }}</td>
+                <td><span class="badge badge-success"> 5 / 2</span></td>
                 <td>
                         <a class='btn btn-mini btn-primary' href="{{ path('talk_show', { 'id': entity.id }) }}">show</a>
                         <a class='btn btn-mini btn-primary' href="{{ path('talk_edit', { 'id': entity.id }) }}">edit</a>

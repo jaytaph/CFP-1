@@ -6,3 +6,7 @@ cfp_home_about:
     pattern:  /about
     defaults: { _controller: CfpHomeBundle:Default:about }
 
+cfp_speaker_autocomplete_ajax:
+    pattern:  /about
+    defaults: { _controller: CfpHomeBundle:Default:about }
+

@@ -13,3 +13,27 @@
     <a href="{{ path('talk') }}">Back to the list</a>
 
 {% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript" src="/bundles/mopabootstrap/js/mopabootstrap-collection.js"></script>
+    <script type="text/javascript" src="/js/jquery.tokeninput.js"></script>
+
+
+        {#<script type="text/javascript">#}
+            {#&#123;&#35; On every "new speaker" click &#35;&#125;#}
+            {#$(".addtokenInputter").on("click.collection.data-api", function() {#}
+                {#&#123;&#35; Find all ajax_speaker_ac classes &#35;&#125;#}
+                {#$(".ajax_speaker_ac").each(function(index, val) {#}
+                    {#&#123;&#35; Check if the aced is not present &#35;&#125;#}
+                    {#if (! $(this).hasClass("aced")) {#}
+                        {#&#123;&#35; Add tokenInput to this field &#35;&#125;#}
+                        {#$(this).tokenInput("{{ path("user_controller_finduser") }}");#}
+                        {#&#123;&#35; And add the aced class, so it will not be added again &#35;&#125;#}
+                        {#$(this).addClass("aced");#}
+                    {#}#}
+                {#});#}
+            {#});#}
+        {#</script>#}
+
+{% endblock %}

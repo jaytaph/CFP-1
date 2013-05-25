@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Cfp\TalkBundle\Entity\Talk;
+use Cfp\TalkBundle\Entity\Speaker;
 use Cfp\TalkBundle\Form\TalkType;
 
 /**
@@ -43,6 +44,35 @@ class TalkController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $em->flush();
+
+            // Always add ourself as a confirmed speaker
+            $user = $this->get('security.context')->getToken()->getUser();
+            $s = new Speaker();
+            $s->setTalk($entity);
+            $s->setUser($user);
+            $s->setConfirmed(true);
+            $em->persist($s);
+            $em->flush();
+
+            $req = $request->request->get('cfp_talkbundle_talktype');
+            if (! isset($req['speaker'])) $req['speaker'] = array();
+            foreach ($req['speaker'] as $speaker) {
+                $user = $em->getRepository('CfpUserBundle:User')->findOneByFullName($speaker);
+                $speaker = $user ? $em->getRepository('CfpTalkBundle:Speaker')->findByUserAndTalk($user, $entity) : null;
+                if ($user and ! $speaker) {
+                    // User exists, and is not registered as a speaker
+                    $s = new Speaker();
+                    $s->setTalk($entity);
+                    $s->setUser($user);
+                    $s->setConfirmed(false);
+                    $s->setConfirmCode(substr(md5(uniqid(mt_rand(), true)), 0, 8));    // It's code, not a password!
+                    $em->persist($s);
+
+                    // @TODO: Send mail to user to confirm as a speaker?
+                }
+            }
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('talk_show', array('id' => $entity->getId())));

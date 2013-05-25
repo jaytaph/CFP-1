@@ -82,6 +82,8 @@ class User extends BaseUser
      */
     public function __construct()
     {
+        // Important to call the parent constructor as well. Otherwise things like salts etc aren't initialized properly
+        parent::__construct();
         $this->biographies = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -165,4 +167,37 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Add talks
+     *
+     * @param \Cfp\TalkBundle\Entity\Speaker $talks
+     * @return User
+     */
+    public function addTalk(\Cfp\TalkBundle\Entity\Speaker $talks)
+    {
+        $this->talks[] = $talks;
+    
+        return $this;
+    }
+
+    /**
+     * Remove talks
+     *
+     * @param \Cfp\TalkBundle\Entity\Speaker $talks
+     */
+    public function removeTalk(\Cfp\TalkBundle\Entity\Speaker $talks)
+    {
+        $this->talks->removeElement($talks);
+    }
+
+    /**
+     * Get talks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTalks()
+    {
+        return $this->talks;
+    }
 }

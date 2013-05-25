@@ -52,7 +52,7 @@ class Talk
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="Cfp\TalkBundle\Entity\Speaker", inversedBy="talk")
+     * @ORM\OneToMany(targetEntity="Cfp\TalkBundle\Entity\Speaker", mappedBy="talk")
      */
     private $speakers;
 

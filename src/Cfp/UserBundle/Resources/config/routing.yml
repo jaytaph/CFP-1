@@ -6,6 +6,11 @@ CfpUserBundle_widget:
     resource: "@CfpUserBundle/Resources/config/routing/widget.yml"
     prefix:   /widget
 
+CfpUserBundle_user:
+    resource: "@CfpUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

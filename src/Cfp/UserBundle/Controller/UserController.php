@@ -10,6 +10,29 @@ class UserController extends Controller
 {
 
     /**
+     * Ajax controller: returns a number of users (id, email, full name) based on the given pattern.
+     * For security reasons, it will only return when we have very few matches.
+     *
+     * @return Response
+     */
+    public function findUserAction() {
+        // Only Ajax requests are allowed
+        if (! $this->getRequest()->isXmlHttpRequest()) {
+            throw new AccessDeniedHttpException();
+        }
+
+        $pattern = $this->getRequest()->get('pattern');
+
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository("CfpUserBundle:User")->findUsersByPattern($pattern, 10);
+
+        $response = new Response();
+        $response->setStatusCode(200);
+        $response->setContent(json_encode(array("users" => $users)));
+        return $response;
+    }
+
+    /**
      * @return Response
      * @throws \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
      */
