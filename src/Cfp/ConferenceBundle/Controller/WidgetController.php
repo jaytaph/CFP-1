@@ -8,6 +8,14 @@ class WidgetController extends Controller
 {
     public function conferencesAction()
     {
-        return $this->render('CfpConferenceBundle:Widget:conferences.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('CfpConferenceBundle:Conference');
+        $total_count = $repo->getCount();
+        $open_count = $repo->getOpenCfpsCount();
+
+        return $this->render('CfpConferenceBundle:Widget:conferences.html.twig', array(
+            'open_count' => $open_count,
+            'total_count' => $total_count,
+            ));
     }
 }

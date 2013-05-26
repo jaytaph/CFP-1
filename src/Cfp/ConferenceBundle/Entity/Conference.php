@@ -92,6 +92,11 @@ class Conference
     private $tag;
 
 
+    public function isOpen() {
+        $now = new \DateTime();
+        return ($this->getCfpStart() <= $now && $this->getCfpEnd() >= $now);
+    }
+
 
     /**
      * Get id

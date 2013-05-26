@@ -34,3 +34,12 @@ conference_submit:
     defaults: { _controller: "CfpConferenceBundle:Conference:submit" }
     requirements: { _method: post }
 
+
+conference_open_cfp:
+    pattern:  /open
+    defaults: { _controller: "CfpConferenceBundle:Conference:openCfp" }
+
+conference_closed_cfp:
+    pattern:  /closed
+    defaults: { _controller: "CfpConferenceBundle:Conference:closedCfp" }
+
