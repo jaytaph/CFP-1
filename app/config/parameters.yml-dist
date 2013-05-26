@@ -16,3 +16,6 @@ parameters:
 
     email_contact_email: info@example.org
     email_contact_name:  Call4Papers Team
+
+    github_oauth_client_id: <<your id>>
+    github_oauth_client_secret: <<your secret>>
