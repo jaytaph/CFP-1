@@ -3,10 +3,10 @@
 <div class="well">
     <ul class="nav nav-list">
         <li class="nav-header">Conferences</li>
-        <li><a href="#"><i class="icon-book"></i> All open CFPs <span class="badge badge-success">N/A</span></a></li>
+        <li><a href="{{ path('conference_open_cfp') }}"><i class="icon-book"></i> Open CFPs <span class="badge badge-success">{{ open_count }}</span></a></li>
+        <li><a href="{{ path('conference') }}"><i class="icon-envelope"></i> All conferences <span class="badge badge-warning">{{ total_count }}</span></a></li>
         <li><a href="#"><i class="icon-user"></i> My submitted talks <span class="badge badge-info">N/A</span></a></li>
         <li><a href="#"><i class="icon-envelope"></i> My rejected talks <span class="badge badge-success">N/A</span></a></li>
-        <li><a href="#"><i class="icon-envelope"></i> Closed conferences <span class="badge badge-warning">N/A</span></a></li>
         <li class="divider"></li>
         <li><a href="#"><i class="icon-flag"></i> Help</a></li>
     </ul>

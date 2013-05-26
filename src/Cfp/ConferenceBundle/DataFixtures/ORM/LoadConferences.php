@@ -56,6 +56,21 @@ class LoadConferences extends AbstractFixture implements OrderedFixtureInterface
         $conferenceAdmin->setUser($this->getReference('admin1'));
         $manager->persist($conferenceAdmin);
 
+
+        // Open CFP
+        $conference = new Conference();
+        $conference->setName('PHPBenelux 2013');
+        $conference->setDescription('The PHPBenelux conference');
+        $conference->setDtCreated(new \DateTime());
+        $conference->setCfpStart(new \DateTime("@".strtotime("-1 week")));
+        $conference->setCfpEnd(new \DateTime("@".strtotime("+1 week")));
+        $conference->setDtStart(new \DateTime("2012-01-27 00:00:00"));
+        $conference->setDtEnd(new \DateTime("2012-01-28 00:00:00"));
+        $conference->setGeoLong(0);
+        $conference->setGeoLat(0);
+        $manager->persist($conference);
+        $this->addReference('conf-3', $conference);
+
         $manager->flush();
     }
 

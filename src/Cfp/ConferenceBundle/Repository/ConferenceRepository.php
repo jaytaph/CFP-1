@@ -56,4 +56,25 @@ class ConferenceRepository extends EntityRepository
                   ->getResult();
     }
 
+    public function getOpenCfpsCount()
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+                    ->select('COUNT(c.id)')
+                    ->from('Cfp\ConferenceBundle\Entity\Conference', 'c')
+                    ->where('c.cfpStart <= :now')
+                    ->andWhere('c.cfpEnd >= :now')
+                    ->setParameter('now', date('Y-m-d H:i:s'))
+                    ->getQuery()
+                    ->getSingleScalarResult();
+    }
+
+    public function getCount()
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+                    ->select('COUNT(c.id)')
+                    ->from('Cfp\ConferenceBundle\Entity\Conference', 'c')
+                    ->getQuery()
+                    ->getSingleScalarResult();
+    }
+
 }
