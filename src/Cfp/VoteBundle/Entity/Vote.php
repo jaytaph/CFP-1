@@ -136,10 +136,10 @@ class Vote
     /**
      * Set user
      *
-     * @param \Cfp\ConferenceBundle\Entity\User $user
+     * @param \Cfp\UserBundle\Entity\User $user
      * @return Vote
      */
-    public function setUser(\Cfp\ConferenceBundle\Entity\User $user = null)
+    public function setUser(\Cfp\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
     
@@ -149,7 +149,7 @@ class Vote
     /**
      * Get user
      *
-     * @return \Cfp\ConferenceBundle\Entity\User
+     * @return \Cfp\UserBundle\Entity\User
      */
     public function getUser()
     {
