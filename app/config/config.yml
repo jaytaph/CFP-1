@@ -117,6 +117,6 @@ hwi_oauth:
     resource_owners:
         github:
             type:                github
-            client_id:           e019d85615a144e59ba9
-            client_secret:       46818a6a8a18ca08382b2e9441cda9a916559ee4
+            client_id:           %github_oauth_client_id%
+            client_secret:       %github_oauth_client_secret%
             scope:               ""
